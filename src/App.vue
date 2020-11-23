@@ -46,7 +46,50 @@ export default {
       player: new Audio()
     }
   },
-
+  methods: {
+    play (song) {
+      if (typeof song.src != "undefined") {
+        this.current = song;
+        this.player.src = this.current.src;
+      }
+      this.player.play();
+      this.player.addEventListener('ended', function () {
+        this.index++;
+        if (this.index > this.songs.length - 1) {
+          this.index = 0;
+        }
+        this.current = this.songs[this.index];
+        this.play(this.current);
+      }.bind(this));
+      this.isPlaying = true;
+    },
+    pause () {
+      this.player.pause();
+      this.isPlaying = false;
+    },
+    next () {
+      this.index++;
+      if (this.index > this.songs.length - 1) {
+        this.index = 0;
+      }
+      this.current = this.songs[this.index];
+      this.play(this.current);
+    },
+    prev () {
+      this.index--;
+      if (this.index < 0) {
+        this.index = this.songs.length - 1;
+      }
+      this.current = this.songs[this.index];
+      this.play(this.current);
+    }
+  },
+  created () {
+    this.current = this.songs[this.index];
+    this.player.src = this.current.src;
+  }
+}
+</script>
 
 <style>
 * {
