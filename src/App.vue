@@ -76,7 +76,6 @@ export default {
       this.play(this.current);
     },
     prev () {
-      this.index--;
       if (this.index < 0) {
         this.index = this.songs.length - 1;
       }
