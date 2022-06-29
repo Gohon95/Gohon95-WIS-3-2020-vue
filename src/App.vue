@@ -41,6 +41,16 @@ export default {
           title: 'Instru',
           artist: 'Piano',
           src: require('./assets/piano-instru.mp3')
+        },
+        {
+          title: 'Dj',
+          artist: 'Rap',
+          src: require('./assets/dj.mp3')
+        },
+        {
+          title: 'More Than',
+          artist: 'Electro',
+          src: require('./assets/more.mp3')
         }
       ],
       player: new Audio()
